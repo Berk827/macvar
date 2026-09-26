@@ -10,4 +10,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 10000
 
-CMD ["gunicorn", "app:app", "-w", "4", "-k", "gevent", "--worker-connections", "100", "-b", "0.0.0.0:10000", "--timeout", "120", "--keep-alive", "5", "--max-requests", "1000", "--max-requests-jitter", "100"]
+CMD gunicorn app:app --bind 0.0.0.0:10000 --worker-class gevent --workers 4 --timeout 120
